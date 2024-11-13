@@ -8,13 +8,15 @@ const { getDepartments , postDepartment , updateDepartment , deleteDepartment} =
 
 const router = express.Router();
 
-router.get('/' , checkToken, getDepartments);
+// router.get('/' , checkToken(['Admin', 'Doctor']), getDepartments);
 
-router.post('/', checkToken, postDepartment);
+router.get('/' ,  getDepartments);
 
-router.patch('/:id', checkToken, updateDepartment);
+router.post('/',  postDepartment);
 
-router.delete('/:id', checkToken, deleteDepartment);
+router.patch('/:id', updateDepartment);
+
+router.delete('/:id',  deleteDepartment);
 
 
 module.exports = router;

@@ -30,6 +30,7 @@ module.exports.signup = async (req , res) => {
 
 
 module.exports.login = async (req,res) => {
+
     try {
         
         const {email,password} = req.body;
@@ -46,7 +47,6 @@ module.exports.login = async (req,res) => {
             return res.status(400).json({message : "No Email or Password is incorrect"});
         }
 
-
         const token = jwt.sign({id : admin._id , role : admin.role}, process.env.SECRET_KEY , {expiresIn : '7d'});
 
         return res.status(200).json({message: "You are logged in" , token : token});
@@ -54,4 +54,5 @@ module.exports.login = async (req,res) => {
     } catch (err) {
         res.status(500).json({message : err.message});
     }
+    
 };

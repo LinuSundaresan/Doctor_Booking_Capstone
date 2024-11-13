@@ -28,7 +28,7 @@ module.exports.signup = async (req , res) => {
 
         const hashedPassword = await bcrypt.hash(password , 2);
 
-        const dbResponse = await Doctor.create({...req.body, password : hashedPassword});
+        const dbResponse = await Doctor.create({...req.body, password : hashedPassword, role : 'Doctor'});
 
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -70,6 +70,8 @@ module.exports.login = async (req,res) => {
 
         const doctor = await Doctor.findOne({email: email});
 
+       
+
         if (!doctor) {
             return res.status(400).json({message : "Email or Password is incorrect 1"});
         }
@@ -80,7 +82,7 @@ module.exports.login = async (req,res) => {
             return res.status(400).json({message : "Email or Password is incorrect"});
         }
 
-        const token = jwt.sign({id : doctor._id , role : doctor.role}, process.env.SECRET_KEY , {expiresIn : '7d'});
+        const token = jwt.sign({id : doctor._id , role : 'Doctor'}, process.env.SECRET_KEY , {expiresIn : '7d'});
 
         return res.status(200).json({message: "You are logged in" , token : token});
         
