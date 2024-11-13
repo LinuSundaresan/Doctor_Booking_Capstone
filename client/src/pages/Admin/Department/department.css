@@ -1,0 +1,29 @@
+.add-btn-container {
+    margin: 10px;
+    display: flex;
+    justify-content: end;
+    
+}
+
+.add-button {
+    background-color: #AA8B56;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+}
+
+.table-image {
+    width: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.table-icon {
+    cursor: pointer;
+    color : #4E6C50;
+}
+
+.ant-table-thead > tr > th {
+    background-color: #4CAF50; /* Replace with your desired color */
+    color: white;              /* Text color */
+}

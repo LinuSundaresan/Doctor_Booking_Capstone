@@ -1,0 +1,15 @@
+.add-department-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 40px auto;
+}
+
+.add-department-form .input-about {
+    grid-row: 2/2;
+}
+
+.add-department-form .add-button {
+    grid-row: 3/4;
+    width: 30%;
+}
