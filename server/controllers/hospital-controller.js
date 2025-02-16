@@ -17,7 +17,7 @@ module.exports.getHospitals = async(req, res) => {
 
 module.exports.postHospital = async (req, res)=> {
     try {
-        // console.log(req.body);
+         console.log(req.body);
         const hospital = await Hospital.create(req.body);
         res.status(201).json(hospital);
     } catch (e) {

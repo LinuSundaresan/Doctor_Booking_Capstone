@@ -1,8 +1,17 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink , useNavigate} from 'react-router-dom';
 import './admin-layout.css';
-import { Table } from "antd";
+
 
 const AdminLayout = ({children , heading}) => {
+
+    const navigate = useNavigate();
+
+
+    const AdminLogout = () => {
+
+        localStorage.removeItem('token');
+        navigate('/admin/login');
+    };
 
     return (
         <>
@@ -16,14 +25,14 @@ const AdminLayout = ({children , heading}) => {
                         <div className="menu-container">
                             <NavLink className="menu-item" to="/admin/home">Home</NavLink>
                             <NavLink className="menu-item" to="/admin/department">Department</NavLink>
-                            <NavLink className="menu-item">Doctor</NavLink>
+                            <NavLink className="menu-item" to="/admin/doctor">Doctor</NavLink>
                             <NavLink className="menu-item" to="/admin/hospital">Hospital</NavLink>
-                            <NavLink className="menu-item">Profile</NavLink>
+                            <NavLink className="menu-item" to="/admin/profile">Profile</NavLink>
                         </div>
                         <p className='menu-head'>Others</p>
                         <div className="menu-container">
                             <NavLink className="menu-item">Settings</NavLink>
-                            <NavLink className="menu-item">Logout</NavLink>
+                            <p className="menu-item" onClick={AdminLogout}>Logout</p>
                         
                         </div>
                     </div>

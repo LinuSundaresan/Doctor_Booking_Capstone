@@ -1,0 +1,70 @@
+.admin-layout {
+    display: grid;
+    grid-template-areas: 'sidebar navbar navbar navbar navbar navbar navbar navbar ' 
+                            'sidebar container container container container container container container ';
+    
+}
+
+.admin-layout .sidebar {
+    height: 100vh;
+    background-color: #4E6C50;
+    grid-area: sidebar;
+    position: fixed;
+    z-index: 1;
+}
+
+.admin-layout .sidebar .logo img {
+    width: 200px;
+}
+
+.admin-layout .sidebar .menu  {
+    display: flex;
+    flex-direction: column;
+    color: #F0EBCE;
+    gap: 10px;
+    padding: 20px;
+}
+
+.admin-layout .sidebar .menu-item  {
+    display: flex;
+    flex-direction: column;
+    color: #F0EBCE;
+    margin-top: 10px;
+    text-decoration: none;
+}
+
+.admin-layout .sidebar .menu-head {
+    color: #AA8B56;
+    margin-top: 30px;
+    font-weight: 600;
+}
+
+.admin-layout .sidebar .menu-container  {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    gap: 20px;
+}
+
+
+.admin-layout nav {
+    width: 100%;
+    height: 70px;
+    background-color: #395144;
+    grid-area: navbar;
+    position: fixed;
+}
+.admin-layout .container {
+    background-color: rgb(202, 205, 202);
+    grid-area: container;
+    padding: 50px;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 70px;
+    height: 100vh;
+    width: 88%;
+}
+
+.admin-layout .container h1 {
+    color : #395144;
+}

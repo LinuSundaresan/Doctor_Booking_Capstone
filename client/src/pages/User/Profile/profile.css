@@ -1,0 +1,45 @@
+.admin-login .admin-login-form {
+
+    width: 500px;
+    box-shadow: 0px 0px 10px 10px rgb(196, 196, 196);
+    border-radius: 20px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr ;
+    gap: 10px;
+    margin: 150px auto;
+}
+
+.admin-login-form .heading {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+.admin-profile {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9; /* Light gray background */
+    border-radius: 8px;  /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: Arial, sans-serif;
+}
+
+.admin-profile .profileData {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0; /* Light border for separation */
+    font-size: 16px;
+    color: #333; /* Darker text color for readability */
+}
+
+.admin-profile .profileData:last-child {
+    border-bottom: none; /* Remove border for the last item */
+}
+
+.admin-profile .profileData span {
+    font-weight: bold; /* Bold labels for key information */
+    color: #007BFF; /* Optional: Add accent color for labels */
+}

@@ -58,7 +58,7 @@ const doctorSchema = Schema({
     },
     image : {
         type : String,
-        default : 'http://localhost/images/no-image.jpg'
+        default : 'http://localhost:3000/images/no_image.jpg'
     },
     //timeslot : [slotSchema]
 

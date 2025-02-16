@@ -9,6 +9,8 @@
     height: 100vh;
     background-color: #4E6C50;
     grid-area: sidebar;
+    position: fixed;
+    z-index: 1;
 }
 
 .admin-layout .sidebar .logo img {
@@ -50,9 +52,19 @@
     height: 70px;
     background-color: #395144;
     grid-area: navbar;
+    position: fixed;
 }
 .admin-layout .container {
     background-color: rgb(202, 205, 202);
     grid-area: container;
     padding: 50px;
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 70px;
+    height: 100vh;
+    width: 88%;
+}
+
+.admin-layout .container h1 {
+    color : #395144;
 }

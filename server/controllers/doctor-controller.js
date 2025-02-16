@@ -1,5 +1,9 @@
 const Doctor = require('../db/models/doctor-schema');
 
+const Slot = require('../db/models/slot-schema');
+
+const Appointment = require('../db/models/appointment-schema');
+
 const bcrypt = require('bcrypt');
 
 const jwt = require('jsonwebtoken');
@@ -84,7 +88,7 @@ module.exports.login = async (req,res) => {
 
         const token = jwt.sign({id : doctor._id , role : 'Doctor'}, process.env.SECRET_KEY , {expiresIn : '7d'});
 
-        return res.status(200).json({message: "You are logged in" , token : token});
+        return res.status(200).json({message: "You are logged in" , token : token, id:doctor._id});
         
     } catch (err) {
         res.status(500).json({message : err.message});
@@ -170,3 +174,107 @@ module.exports.resetPassword = async(req, res) => {
     }
 
 }
+
+module.exports.getDoctors = async(req,res)=> {
+    try {
+        const dbResponse = await Doctor.find();
+        res.status(200).json(dbResponse);
+    } catch (e) {
+        res.status(500).json({message:e.message , error:true});
+    }
+};
+
+module.exports.getDoctor = async(req,res)=> {
+    try {
+        const id = req.params.id;
+        const doctor = await Doctor.findById(id, req.body);
+        res.status(200).json(doctor);
+    } catch (e) {
+        res.status(500).json({message : e.message , error:true})
+    }
+};
+
+module.exports.updateDoctor = async (req, res)=> {
+    try {
+        const id = req.params.id;
+        const doctor = await Doctor.findByIdAndUpdate(id, req.body);
+        res.status(200).json(doctor);
+    } catch (e) {
+        res.status(500).json({message : e.message , error:true})
+    }
+};
+
+module.exports.deleteDoctor = async (req, res)=> {
+    try {
+        const id = req.params.id;
+        const doctor = await Doctor.findByIdAndDelete(id);
+        res.status(200).json(doctor);
+    } catch (e) {
+        res.status(500).json({message : e.message , error:true})
+    }
+};
+
+
+module.exports.saveSlot = async (req, res)=> {
+    try {
+        const slot = await Slot.create(req.body);
+        res.status(201).json(slot);
+    } catch (e) {
+        res.status(500).json({message : e.message , error:true})
+    }
+};
+
+module.exports.getSlot = async (req, res)=> {
+
+    console.log("test");
+    try {
+        const dbResponse = await Slot.find();
+        res.status(200).json(dbResponse);
+    } catch (e) {
+        res.status(500).json({message:e.message , error:true});
+    }
+};
+
+module.exports.getAppointments = async (req, res) => {
+    try {
+        const { id: doctorId } = req.params;  // Extract userId from URL params
+
+        if (!doctorId) {
+            return res.status(400).json({ message: "User ID is required", error: true });
+        }
+
+        // Fetch appointments for the given user
+        const appointments = await Appointment.find({ doctor: doctorId })
+            .populate("hospital", "name")
+            .populate("department", "name")
+            .populate("user", "firstname")
+            .sort({ date: 1 });
+
+        res.status(200).json({ success: true, appointments });
+    } catch (error) {
+        console.error("Error fetching doctor appointments:", error);
+        res.status(500).json({ message: error.message, error: true });
+    }
+};
+
+module.exports.addPrescription = async (req, res) => {
+    try {
+        const { appointmentId, prescription } = req.body;
+
+        if (!appointmentId) {
+            return res.status(400).json({ message: "appointmentId is required", error: true });
+        }
+
+        // Fetch appointments for the given user
+        const appointments = await Appointment.find({ _id: appointmentId })
+            .populate("hospital", "name")
+            .populate("department", "name")
+            .populate("user", "firstname")
+            .sort({ date: 1 });
+
+        res.status(200).json({ success: true, appointments });
+    } catch (error) {
+        console.error("Error fetching doctor appointments:", error);
+        res.status(500).json({ message: error.message, error: true });
+    }
+};

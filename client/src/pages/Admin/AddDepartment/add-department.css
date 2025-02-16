@@ -13,3 +13,9 @@
     grid-row: 3/4;
     width: 30%;
 }
+
+.add-department-form img {
+    width: 30%;
+    margin-top: 10px;
+    border-radius: 10px;
+}

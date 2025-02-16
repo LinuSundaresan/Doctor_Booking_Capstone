@@ -2,11 +2,11 @@ import './department.css';
 
 import AdminLayout from '../../../components/AdminLayout';
 
-import { Table } from "antd";
+import { Table , notification } from "antd";
 
 import moment from "moment";
 
-import axios from 'axios';
+import axios from '../../../utils/axios';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ const Department = () => {
             title: 'Edit',
             dataIndex: '_id',
             key: 'edit',
-            render : (id) => { return <i className="fa fa-edit table-icon"></i>}
+            render : (id) => { return <i className="fa fa-edit table-icon" onClick={()=>{onEditDepartment(id)}}></i>}
         },
         {
             title: 'Delete',
@@ -69,13 +69,40 @@ const Department = () => {
             getDepartment()
         }, []);
 
+        const handleSuccess = () => {
+            notification.success({
+                message: 'Department Deleted',
+                description: 'The department has been successfully deleted.',
+            });
+        };
+
         const onDeleteDepartment = async(id) => {
 
-            const response = await axios.delete(`http://localhost:3000/department/${id}`);
+            const response = await axios.delete(`/department/${id}`);
             getDepartment();
+
+            console.log(response);
+            if (response.status === 200) {
+                handleSuccess();
+            }
+
+            
+              
         }
 
         const navigate = useNavigate();
+
+        const onEditDepartment = ( id ) => {
+            navigate(`/admin/edit-department/${id}`);
+        }
+
+        const showNotification = (type, message, description) => {
+            notification[type]({
+              message: message,
+              description: description,
+              placement: 'topRight', // Optional: Change placement ('topLeft', 'bottomRight', etc.)
+            });
+        };
 
     return (
         <>

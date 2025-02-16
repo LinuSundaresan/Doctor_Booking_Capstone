@@ -1,0 +1,181 @@
+header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  header .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  header .profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  .parallax-banner {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+      background: url('/bg.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed; /* This enables the parallax effect */
+  }
+
+  .parallax-banner h1 {
+      font-size: 36px;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 2;
+  }
+
+  .parallax-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Optional overlay for better text contrast */
+      z-index: 1;
+  }
+
+  .search-section {
+    background: rgb(157 95 95 / 10%);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin: -80px auto 40px;
+    max-width: 800px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .search-section select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(128, 128, 128, 0.2); /* Light grey background */
+    color: white;
+    outline: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.search-section select:hover {
+    background: rgba(128, 128, 128, 0.3); /* Slightly darker grey on hover */
+}
+
+  .search-section h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .search-section form {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .search-section input, 
+  .search-section select, 
+  .search-section button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    outline: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .search-section button {
+    background-color: rgba(63, 81, 181, 0.8);
+    color: white;
+    cursor: pointer;
+  }
+
+  .search-section button:hover {
+    background-color: rgba(63, 81, 181, 1);
+    transform: scale(1.05);
+  }
+
+  .main-content {
+    background: #f9f9f9; /* Plain background starts here */
+    color: #333;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: -20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  table th {
+    background: #f0f0f0;
+    font-weight: 500;
+  }
+
+  footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    color: #888;
+  }
+
+  @media (max-width: 768px) {
+    .search-section form {
+      flex-direction: column;
+    }
+
+    .parallax-banner h1 {
+      font-size: 28px;
+    }
+  }

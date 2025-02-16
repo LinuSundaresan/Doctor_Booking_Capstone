@@ -49,7 +49,7 @@ module.exports.login = async (req,res) => {
 
         const token = jwt.sign({id : admin._id , role : admin.role}, process.env.SECRET_KEY , {expiresIn : '7d'});
 
-        return res.status(200).json({message: "You are logged in" , token : token});
+        return res.status(200).json({message: "You are logged in" , token : token , id : admin._id});
         
     } catch (err) {
         res.status(500).json({message : err.message});

@@ -16,10 +16,6 @@ const checkToken = (roles)  => {
 
             const isMatching = jwt.verify(token, process.env.SECRET_KEY);
 
-            console.log(isMatching);
-
-            console.log("given role " + roles);
-
             if(!roles.includes(isMatching.role)){
                 res.status(403).json({message: " You are not authorized"});
             }
